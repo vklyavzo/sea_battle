@@ -432,13 +432,22 @@ window.onload = function(){
                 }
             }
             else{
+                ship4 = true;
                 random4();
             }
         }
         else{
+            ship4 = true;
             random4();
         }
-        sum = ship1*1 + ship2*2 + ship3*3 + ship4*3;
+
+        if( ship4 == true){
+            sum = ship1*1 + ship2*2 + ship3*3 + 4;
+        }
+        else{
+            sum = ship1*1 + ship2*2 + ship3*3 ;
+        }
+        
         return sum
     };
     //начало игры
@@ -492,7 +501,7 @@ window.onload = function(){
         else{
             timer = setInterval(() => GameBot(), 5000)
         }
-        if(win2 > ship1_length || win1 > ship2_length){
+        if(win2 >= ship1_length || win1 >= ship2_length){
             clearInterval(timer);
             box.forEach(item => item.style.display = 'none');
             restart.style.display = 'block';
@@ -599,7 +608,7 @@ window.onload = function(){
                     player2_play = false;
                     }
         }
-        if(win2 > ship1_length || win1 > ship2_length){
+        if(win2 >= ship1_length || win1 >= ship2_length){
             box.forEach(item => item.style.display = 'none');
             restart.style.display = 'block';
             let winner = document.querySelector('#winner');
@@ -629,6 +638,7 @@ window.onload = function(){
         ship1_length = drawShip(player1.innerHTML, ctx1, randomXY_check1, empty1);
         ship2_length = drawShip(player2.innerHTML, ctx2, randomXY_check2, empty2);
         field2_check.style.top = '50px';
+        console.log(ship1_length, ship2_length)
         field2_check.addEventListener('click', Game);
         field1_check.addEventListener('click', Game);
     });
