@@ -62,8 +62,12 @@ window.onload = function(){
     let randomXY_check2 = [];
     let empty1 = [];
     let empty2 = [];
+    let ship1_length = 0;
+    let ship2_length = 0;
+    let win1 = 0;
+    let win2 = 0;
 
-    function drawShip(name, field, array, empty){
+    function drawShip(name, field, array, empty, sum){
 
         function random1(ship1){
             if(name != 'Бот'){
@@ -426,7 +430,7 @@ window.onload = function(){
         else{
             random4();
         }
-        
+         sum = ship1 + ship2 + ship3;
     };
     //начало игры
     let player1_play = true;
@@ -455,7 +459,7 @@ window.onload = function(){
                 ctx1.stroke();
             }
             else{
-                randomXY_check1.splice(index,1)
+		win2++;
                 ctx12.fillStyle = 'Red';
                 player2_play = true;
                 player1_play = false;
@@ -471,7 +475,7 @@ window.onload = function(){
         else{
             timer = setInterval(() => GameBot(), 5000)
         }
-        if(randomXY_check2.length == 0 || randomXY_check1.length == 0){
+        if(win2 > ship1_length || win1 > ship2_length){
             clearInterval(timer);
             box.forEach(item => item.style.display = 'none');
             restart.style.display = 'block';
@@ -510,7 +514,7 @@ window.onload = function(){
                     ctx1.stroke();
                 }
                 else{
-                    randomXY_check1.splice(index,1)
+		    win2++;
                     ctx12.fillStyle = 'Red';
                     player2_play = true;
                     player1_play = false;
@@ -547,7 +551,7 @@ window.onload = function(){
                     ctx2.stroke();
                 }
                 else{
-                    randomXY_check2.splice(index,1)
+		    win1++;
                     ctx22.fillStyle = 'Red';
                     player1_play = true;
                     player2_play = false;
@@ -562,7 +566,7 @@ window.onload = function(){
                     ctx2.stroke();
                 }
         }
-        if(randomXY_check2.length == 0 || randomXY_check1.length == 0){
+        if(win2 > ship1_length || win1 > ship2_length){
             box.forEach(item => item.style.display = 'none');
             restart.style.display = 'block';
             let winner = document.querySelector('#winner');
@@ -613,8 +617,8 @@ window.onload = function(){
         start_bot.style.display = 'none';
         start_friends.style.display = 'none';
         // Заполнение полей
-        drawShip(player1.innerHTML, ctx1, randomXY_check1, empty1);
-        drawShip(player2.innerHTML, ctx2, randomXY_check2, empty2);
+        drawShip(player1.innerHTML, ctx1, randomXY_check1, empty1, ship1_length);
+        drawShip(player2.innerHTML, ctx2, randomXY_check2, empty2, ship2_length);
         field2_check.style.top = '50px';
         field2_check.addEventListener('click', Game);
         timer = setInterval(() => GameBot(), 2500);
