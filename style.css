@@ -1,0 +1,88 @@
+body{
+    margin: 0;
+    background-color: rgb(135, 180, 203);
+    text-align: center;
+}
+.box{
+    display: inline-block;
+    position: relative;
+}
+#player1,#player2{
+    height: 20px;
+    width: 300px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px;
+}
+#player1{
+    color: red;
+}
+#player2{
+    color: blue;
+}
+#field1,#field2{
+    margin: 10px;
+    background-color: white;
+}
+#field1{
+    border: 2px solid red;
+}
+#field2{
+    border: 2px solid blue;
+}
+#field1_check{
+    margin: 10px;
+    position: absolute;
+    left: 0px;
+    top: -500px;
+    background-color: white;
+    border: 2px solid red;
+}
+#field2_check{
+    margin: 10px;
+    position: absolute;
+    left: 0px;
+    background-color: white;
+    border: 2px solid blue;
+    top: -500px;
+}
+#start_friends{
+    border: 3px solid rgb(5, 87, 5);
+    background-color: green;
+}
+#start_bot{
+    border: 3px solid rgb(93, 23, 23);
+    background-color: rgb(155, 38, 38);
+}
+#start_friends:hover{
+    border: 3px solid rgb(5, 87, 5);
+    background-color: rgb(102, 155, 107);
+    color: rgb(5, 87, 5);
+    transition: 0.2s;
+}
+#start_bot:hover{
+    border: 3px solid rgb(93, 23, 23);
+    background-color: rgb(176, 114, 114);
+    color: rgb(93, 23, 23);
+    transition: 0.2s;
+}
+#start_friends,#start_bot{
+    padding-top: 40px;
+    width: 300px;
+    height: 80px;
+    border-radius: 60px;
+    margin: 50px auto;
+    font-weight: bold;
+    font-size: 30px;
+    cursor: pointer;
+}
+#restart{
+    display: none;
+    font-size: 30px;
+    margin-top: 50px;
+}
+#winner{
+    color: rgb(206, 92, 11);
+}
