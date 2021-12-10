@@ -578,7 +578,7 @@ window.onload = function(){
     // Игра с другом
     start_friends.addEventListener('click', function(){
         // Создание игроков
-        let conf = confirm('Хотите ввести имена играков?')
+        let conf = confirm('Хотите ввести имена игроков?')
         if(conf == true){
             let name1 = prompt('Первый игрок');
             let name2 = prompt('Второй игрок');
