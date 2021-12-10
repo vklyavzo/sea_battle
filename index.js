@@ -346,10 +346,10 @@ window.onload = function(){
         if(name != 'Бот'){
             conf = confirm('Хотите ввести количество кораблей самостоятельно?');
             if(conf == true){
-                ship1 = prompt('Сколько однопалубных? (Не больше 4)');
+                ship1 = prompt('Сколько катеров? (Не больше 4)');
                 if(ship1 > 4){
                     alert('Введенное число больше 4');
-                    ship1 = prompt('Сколько однопалубных? (Не больше 4)');
+                    ship1 = prompt('Сколько катеров? (Не больше 4)');
                 }
                 else{
                     random1(ship1);
@@ -368,10 +368,10 @@ window.onload = function(){
         let ship2;
         if(name != 'Бот'){
             if(conf == true){
-                ship2 = prompt('Сколько двухпалубных? (Не больше 3)');
+                ship2 = prompt('Сколько эсминцев? (Не больше 3)');
                 if(ship2 > 3){
                     alert('Введенное число больше 3');
-                    ship2 = prompt('Сколько двухпалубных? (Не больше 3)');
+                    ship2 = prompt('Сколько эсминцев? (Не больше 3)');
                 }
                 else{
                     random2(ship2);
@@ -390,10 +390,10 @@ window.onload = function(){
         let ship3;
         if(name != 'Бот'){
             if(conf == true){
-                ship3 = prompt('Сколько трехпалубных? (Не больше 2)');
+                ship3 = prompt('Сколько крейсеров? (Не больше 2)');
                 if(ship3 > 2){
                     alert('Введенное число больше 2');
-                    ship3 = prompt('Сколько трехпалубных? (Не больше 2)');
+                    ship3 = prompt('Сколько крейсеров? (Не больше 2)');
                 }
                 else{
                     random3(ship3);
@@ -411,7 +411,7 @@ window.onload = function(){
         let ship4;
         if(name != 'Бот'){
             if(conf == true){
-                ship4 = confirm('Ставим четырехпалубный?');
+                ship4 = confirm('Ставим линкор?');
                 if(ship4 == true){
                     random4();
                 }
