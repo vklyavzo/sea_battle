@@ -66,6 +66,8 @@ window.onload = function(){
     let ship2_length = 0;
     let win1 = 0;
     let win2 = 0;
+    let player1_array = [];
+    let player2_array = [];
 
     function drawShip(name, field, array, empty, sum){
 
@@ -441,25 +443,28 @@ window.onload = function(){
             let x = Math.floor((Math.random()*271)/30)*30;
             let y = Math.floor((Math.random()*271)/30)*30;
             let index = randomXY_check1.findIndex(elem => elem[0] === x && elem[1] === y)
-            if(index == -1){
+	    let index2 = player1_array.findIndex(elem => elem[0] === x && elem[1] === y)
+            if(index == -1 && index2 == -1){
                 ctx12.fillStyle = 'Gray';
+		player1_array.push([x,y]);
                 player1_play = true;
                 player2_play = false;
                 field1_check.style.top = '-1000px';
                 field2_check.style.top = '50px';
-		        ctx12.moveTo(x, y);
-		        ctx12.lineTo(x+30, y+30);
-		        ctx12.moveTo(x+30, y);
-		        ctx12.lineTo(x, y+30);
-		        ctx12.stroke();
+		ctx12.moveTo(x, y);
+		ctx12.lineTo(x+30, y+30);
+		ctx12.moveTo(x+30, y);
+		ctx12.lineTo(x, y+30);
+		ctx12.stroke();
                 ctx1.moveTo(x, y);
                 ctx1.lineTo(x+30, y+30);
                 ctx1.moveTo(x+30, y);
                 ctx1.lineTo(x, y+30);
                 ctx1.stroke();
             }
-            else{
+            else if (index != -1 && index2 == -1){
 		win2++;
+		player1_array.push([x,y]);
                 ctx12.fillStyle = 'Red';
                 player2_play = true;
                 player1_play = false;
@@ -471,6 +476,10 @@ window.onload = function(){
                 ctx1.lineTo(x, y+30);
                 ctx1.stroke();
             }
+	else{
+		player2_play = true;
+                player1_play = false;
+	}
         }
         else{
             timer = setInterval(() => GameBot(), 5000)
@@ -496,8 +505,10 @@ window.onload = function(){
                 let x = Math.floor((event.offsetX || event.originalEvent.layerX || event.layerX)/30)*30;
                 let y = Math.floor((event.offsetY || event.originalEvent.layerY || event.layerY)/30)*30;
                 let index = randomXY_check1.findIndex(elem => elem[0] === x && elem[1] === y)
-                if(index == -1){
+		let index2 = player1_array.findIndex(elem => elem[0] === x && elem[1] === y)
+                if(index == -1 && index2 == -1){
                     ctx12.fillStyle = 'Gray';
+		    player1_array.push([x,y]);
                     player1_play = true;
                     player2_play = false;
                     field2_check.style.top = '50px';
@@ -513,8 +524,9 @@ window.onload = function(){
                     ctx1.lineTo(x, y+30);
                     ctx1.stroke();
                 }
-                else{
+                else if (index != -1 && index2 == -1){
 		    win2++;
+		    player1_array.push([x,y]);
                     ctx12.fillStyle = 'Red';
                     player2_play = true;
                     player1_play = false;
@@ -526,15 +538,21 @@ window.onload = function(){
                     ctx1.lineTo(x, y+30);
                     ctx1.stroke();
                 }
-        }
+		else{
+		    player2_play = true;
+                    player1_play = false;
+	        }
+         }
         else{
             field1_check.style.top = '-1000px';
             field2_check.style.top = '50px';
                 let x = Math.floor((event.offsetX || event.originalEvent.layerX || event.layerX)/30)*30;
                 let y = Math.floor((event.offsetY || event.originalEvent.layerY || event.layerY)/30)*30;
                 let index = randomXY_check2.findIndex(elem => elem[0] === x && elem[1] === y)
-                if(index == -1){
+		let index2 = player2_array.findIndex(elem => elem[0] === x && elem[1] === y)
+                if(index == -1 && index2 == -1){
                     ctx22.fillStyle = 'Gray';
+	            player2_array.push([x,y]);
                     player2_play = true;
                     player1_play = false;
                     field1_check.style.top = '50px';
@@ -550,8 +568,9 @@ window.onload = function(){
                     ctx2.lineTo(x, y+30);
                     ctx2.stroke();
                 }
-                else{
+                else if (index != -1 && index2 == -1){
 		    win1++;
+		    player2_array.push([x,y]);
                     ctx22.fillStyle = 'Red';
                     player1_play = true;
                     player2_play = false;
@@ -565,6 +584,10 @@ window.onload = function(){
                     ctx2.lineTo(x, y+30);
                     ctx2.stroke();
                 }
+		else{
+		    player1_play = true;
+                    player2_play = false;
+	        }
         }
         if(win2 > ship1_length || win1 > ship2_length){
             box.forEach(item => item.style.display = 'none');
