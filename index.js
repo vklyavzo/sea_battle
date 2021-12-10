@@ -626,8 +626,8 @@ window.onload = function(){
         start_bot.style.display = 'none';
         start_friends.style.display = 'none';
         // Заполнение полей
-        drawShip(player1.innerHTML, ctx1, randomXY_check1, empty1);
-        drawShip(player2.innerHTML, ctx2, randomXY_check2, empty2);
+        ship1_length = drawShip(player1.innerHTML, ctx1, randomXY_check1, empty1);
+        ship2_length = drawShip(player2.innerHTML, ctx2, randomXY_check2, empty2);
         field2_check.style.top = '50px';
         field2_check.addEventListener('click', Game);
         field1_check.addEventListener('click', Game);
