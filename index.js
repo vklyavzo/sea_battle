@@ -439,6 +439,7 @@ window.onload = function(){
             random4();
         }
          sum = ship1 + ship2 + ship3;
+	    console.log(sum)
     };
     //начало игры
     let player1_play = true;
@@ -648,7 +649,6 @@ window.onload = function(){
         // Заполнение полей
         drawShip(player1.innerHTML, ctx1, randomXY_check1, empty1, ship1_length);
         drawShip(player2.innerHTML, ctx2, randomXY_check2, empty2, ship2_length);
-	    console.log(ship1_length, ship2_length)
         field2_check.style.top = '50px';
         field2_check.addEventListener('click', Game);
         timer = setInterval(() => GameBot(), 2500);
