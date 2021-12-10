@@ -362,11 +362,13 @@ window.onload = function(){
                 }
             }
             else{
-                random1(4);
+		ship1 = 4;
+                random1(ship1);
             }
         }
         else{
-            random1(4);
+            ship1 = 4;
+            random1(ship1);
         }
         
         
@@ -384,11 +386,13 @@ window.onload = function(){
                 }
             }
             else{
-                random2(3);
+		ship2 = 3;
+                random2(ship2);
             }
         }
         else{
-            random2(3);
+            ship2 = 3;
+            random2(ship2);
         }
         
         
@@ -406,11 +410,13 @@ window.onload = function(){
                 }
             }
             else{
-                random3(2);
+		ship3 = 2;
+                random3(ship3);
             }
         }
         else{
-            random3(2);
+            ship3 = 2;
+            random3(ship3);
         }
        
         // четырехпалубные
