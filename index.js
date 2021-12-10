@@ -438,8 +438,8 @@ window.onload = function(){
         else{
             random4();
         }
-         sum = ship1 + ship2 + ship3;
-	    console.log(sum)
+        sum = ship1*1 + ship2*2 + ship3*3 + ship4*3;
+        return sum
     };
     //начало игры
     let player1_play = true;
@@ -450,19 +450,19 @@ window.onload = function(){
             let x = Math.floor((Math.random()*271)/30)*30;
             let y = Math.floor((Math.random()*271)/30)*30;
             let index = randomXY_check1.findIndex(elem => elem[0] === x && elem[1] === y)
-	    let index2 = player1_array.findIndex(elem => elem[0] === x && elem[1] === y)
+	        let index2 = player1_array.findIndex(elem => elem[0] === x && elem[1] === y)
             if(index == -1 && index2 == -1){
                 ctx12.fillStyle = 'Gray';
-		player1_array.push([x,y]);
+		        player1_array.push([x,y]);
                 player1_play = true;
                 player2_play = false;
                 field1_check.style.top = '-1000px';
                 field2_check.style.top = '50px';
-		ctx12.moveTo(x, y);
-		ctx12.lineTo(x+30, y+30);
-		ctx12.moveTo(x+30, y);
-		ctx12.lineTo(x, y+30);
-		ctx12.stroke();
+                ctx12.moveTo(x, y);
+                ctx12.lineTo(x+30, y+30);
+                ctx12.moveTo(x+30, y);
+                ctx12.lineTo(x, y+30);
+                ctx12.stroke();
                 ctx1.moveTo(x, y);
                 ctx1.lineTo(x+30, y+30);
                 ctx1.moveTo(x+30, y);
@@ -470,8 +470,8 @@ window.onload = function(){
                 ctx1.stroke();
             }
             else if (index != -1 && index2 == -1){
-		win2++;
-		player1_array.push([x,y]);
+                win2++;
+                player1_array.push([x,y]);
                 ctx12.fillStyle = 'Red';
                 player2_play = true;
                 player1_play = false;
@@ -482,11 +482,12 @@ window.onload = function(){
                 ctx1.moveTo(x+30, y);
                 ctx1.lineTo(x, y+30);
                 ctx1.stroke();
+                console.log(win2)
             }
-	else{
-		player2_play = true;
+            else{
+                player2_play = true;
                 player1_play = false;
-	}
+            }
         }
         else{
             timer = setInterval(() => GameBot(), 5000)
@@ -512,10 +513,10 @@ window.onload = function(){
                 let x = Math.floor((event.offsetX || event.originalEvent.layerX || event.layerX)/30)*30;
                 let y = Math.floor((event.offsetY || event.originalEvent.layerY || event.layerY)/30)*30;
                 let index = randomXY_check1.findIndex(elem => elem[0] === x && elem[1] === y)
-		let index2 = player1_array.findIndex(elem => elem[0] === x && elem[1] === y)
+		        let index2 = player1_array.findIndex(elem => elem[0] === x && elem[1] === y)
                 if(index == -1 && index2 == -1){
                     ctx12.fillStyle = 'Gray';
-		    player1_array.push([x,y]);
+		            player1_array.push([x,y]);
                     player1_play = true;
                     player2_play = false;
                     field2_check.style.top = '50px';
@@ -532,8 +533,8 @@ window.onload = function(){
                     ctx1.stroke();
                 }
                 else if (index != -1 && index2 == -1){
-		    win2++;
-		    player1_array.push([x,y]);
+                    win2++;
+                    player1_array.push([x,y]);
                     ctx12.fillStyle = 'Red';
                     player2_play = true;
                     player1_play = false;
@@ -544,22 +545,23 @@ window.onload = function(){
                     ctx1.moveTo(x+30, y);
                     ctx1.lineTo(x, y+30);
                     ctx1.stroke();
+                    console.log(win2)
                 }
-		else{
-		    player2_play = true;
+                else{
+                    player2_play = true;
                     player1_play = false;
-	        }
-         }
+                    }
+                }
         else{
             field1_check.style.top = '-1000px';
             field2_check.style.top = '50px';
                 let x = Math.floor((event.offsetX || event.originalEvent.layerX || event.layerX)/30)*30;
                 let y = Math.floor((event.offsetY || event.originalEvent.layerY || event.layerY)/30)*30;
                 let index = randomXY_check2.findIndex(elem => elem[0] === x && elem[1] === y)
-		let index2 = player2_array.findIndex(elem => elem[0] === x && elem[1] === y)
+		        let index2 = player2_array.findIndex(elem => elem[0] === x && elem[1] === y)
                 if(index == -1 && index2 == -1){
                     ctx22.fillStyle = 'Gray';
-	            player2_array.push([x,y]);
+	                player2_array.push([x,y]);
                     player2_play = true;
                     player1_play = false;
                     field1_check.style.top = '50px';
@@ -576,8 +578,8 @@ window.onload = function(){
                     ctx2.stroke();
                 }
                 else if (index != -1 && index2 == -1){
-		    win1++;
-		    player2_array.push([x,y]);
+                    win1++;
+                    player2_array.push([x,y]);
                     ctx22.fillStyle = 'Red';
                     player1_play = true;
                     player2_play = false;
@@ -590,11 +592,12 @@ window.onload = function(){
                     ctx2.moveTo(x+30, y);
                     ctx2.lineTo(x, y+30);
                     ctx2.stroke();
+                    console.log(win1)
                 }
-		else{
-		    player1_play = true;
+                else{
+                    player1_play = true;
                     player2_play = false;
-	        }
+                    }
         }
         if(win2 > ship1_length || win1 > ship2_length){
             box.forEach(item => item.style.display = 'none');
@@ -647,16 +650,10 @@ window.onload = function(){
         start_bot.style.display = 'none';
         start_friends.style.display = 'none';
         // Заполнение полей
-        drawShip(player1.innerHTML, ctx1, randomXY_check1, empty1, ship1_length);
-        drawShip(player2.innerHTML, ctx2, randomXY_check2, empty2, ship2_length);
+        ship1_length = drawShip(player1.innerHTML, ctx1, randomXY_check1, empty1);
+        ship2_length = drawShip(player2.innerHTML, ctx2, randomXY_check2, empty2);
         field2_check.style.top = '50px';
         field2_check.addEventListener('click', Game);
         timer = setInterval(() => GameBot(), 2500);
     });
 }
-
-
-
-
-
-
